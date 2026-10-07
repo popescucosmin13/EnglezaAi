@@ -1,0 +1,54 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Adminii (Admin Center) pot citi și administra datele tuturor utilizatorilor.
+    // Ține lista sincronă cu src/admin-config.ts.
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.uid in ['demo-admin-uid'];
+    }
+
+    // Cont reutilizabil oferit exclusiv echipei Google Play Review.
+    // Nu primește drepturi de administrator; ocolește numai verificarea inboxului.
+    function hasEmailVerificationAccess() {
+      return request.auth != null
+        && (request.auth.token.email_verified == true
+          || request.auth.uid in ['demo-review-uid']);
+    }
+
+    function isVerifiedOwner(uid) {
+      return request.auth != null
+        && request.auth.uid == uid
+        && hasEmailVerificationAccess();
+    }
+
+    // Înainte de confirmarea emailului permitem numai inițializarea minimă a
+    // documentului de cont, pentru a păstra versiunile documentelor acceptate.
+    function isLegalSignup(uid) {
+      return request.auth != null
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['email', 'legal'])
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.legal.keys().hasOnly(['termsVersion', 'privacyVersion', 'acceptedAt'])
+        && request.resource.data.legal.termsVersion is string
+        && request.resource.data.legal.privacyVersion is string
+        && request.resource.data.legal.acceptedAt is timestamp;
+    }
+
+    // Configurația globală (modele AI, voce) — setată din Admin Center, citită de toți.
+    match /config/{docId} {
+      allow read: if hasEmailVerificationAccess();
+      allow write: if isAdmin();
+    }
+
+    match /users/{uid} {
+      allow create: if isVerifiedOwner(uid) || isAdmin() || isLegalSignup(uid);
+      allow read, update, delete: if isVerifiedOwner(uid) || isAdmin();
+
+      match /{collection}/{docId} {
+        allow read, write: if isVerifiedOwner(uid) || isAdmin();
+      }
+    }
+  }
+}

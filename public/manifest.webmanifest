@@ -1,0 +1,28 @@
+{
+  "name": "EnglezaAI — Profesorul tău personal de engleză",
+  "short_name": "EnglezaAI",
+  "description": "Conversații vocale reale cu AI, corecturi explicate în română, English Mirror, harta greșelilor, pronunție și repetiție adaptivă.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f4fb",
+  "theme_color": "#5b5bd6",
+  "categories": ["education", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Antrenament de 3 minute",
+      "short_name": "3 minute",
+      "url": "/#/learn",
+      "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Provocarea de 60 de secunde",
+      "short_name": "Vorbește",
+      "url": "/#/voice-challenge",
+      "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    }
+  ],
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

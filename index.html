@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#5b5bd6" />
+    <meta name="description" content="Vorbește engleză cu un profesor AI răbdător. Conversații reale, explicații în română și un plan adaptat ție. Descarcă EnglezaAI pentru iPhone și Android. Începi gratuit." />
+    <link rel="canonical" href="http://localhost:3000/" />
+    <link rel="preload" href="/fonts/manrope-variable.ttf" as="font" type="font/ttf" crossorigin />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ro_RO" />
+    <meta property="og:title" content="EnglezaAI — Engleza ta. Cu voce tare." />
+    <meta property="og:description" content="Conversații cu AI, explicații în română și un plan adaptat ție. Începi gratuit pe iPhone și Android." />
+    <meta property="og:url" content="http://localhost:3000/" />
+    <meta property="og:image" content="http://localhost:3000/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="EnglezaAI — Engleza ta. Cu voce tare." />
+    <meta name="twitter:description" content="Conversații cu AI, explicații în română și un plan adaptat ție. Începi gratuit pe iPhone și Android." />
+    <meta name="twitter:image" content="http://localhost:3000/og.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+    <title>EnglezaAI — Engleză cu AI pentru iPhone și Android</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Fără reload la controllerchange, un service worker nou preia controlul în fundal, dar
+      // pagina deja deschisă rămâne pe codul vechi din memorie — exact simptomul „trebuie să
+      // șterg și să pun din nou PWA-ul". Un singur reload automat rezolvă asta definitiv.
+      if ('serviceWorker' in navigator) {
+        let reloading = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (reloading) return;
+          reloading = true;
+          window.location.reload();
+        });
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then((reg) => {
+            // PWA-ul instalat nu navighează des — verificăm activ la fiecare revenire în prim-plan,
+            // nu doar la verificarea pasivă/rară a browserului.
+            document.addEventListener('visibilitychange', () => {
+              if (document.visibilityState === 'visible') reg.update().catch(() => {});
+            });
+          }).catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/register", "destination": "/#/descarca", "permanent": true },
+    { "source": "/signup", "destination": "/#/descarca", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/auth-action", "destination": "/" }
+  ],
+  "functions": {
+    "api/*.ts": {
+      "maxDuration": 60
+    }
+  }
+}

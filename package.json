@@ -1,0 +1,36 @@
+{
+  "name": "engleza-ai",
+  "private": true,
+  "version": "1.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:vercel": "npx vercel dev",
+    "build": "node scripts/sync-shared.mjs check && tsc -b && vite build && node scripts/stamp-sw.mjs",
+    "preview": "vite preview",
+    "test": "vitest run --exclude \"mobile/**\"",
+    "test:watch": "vitest --exclude \"mobile/**\"",
+    "sync:check": "node scripts/sync-shared.mjs check",
+    "sync:from-web": "node scripts/sync-shared.mjs from-web",
+    "sync:from-mobile": "node scripts/sync-shared.mjs from-mobile"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "firebase": "^12.16.0",
+    "firebase-admin": "13.6.0",
+    "idb-keyval": "^6.2.1",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "@vercel/node": "^5.8.24",
+    "@vitejs/plugin-react": "^4.3.2",
+    "typescript": "~5.6.3",
+    "vite": "^5.4.9",
+    "vitest": "^4.1.10"
+  }
+}

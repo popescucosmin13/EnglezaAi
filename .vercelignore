@@ -1,0 +1,64 @@
+# Local backup archives are not application sources (mobile.zip alone is ~4.7 GB).
+/*.zip
+/*.7z
+/*.rar
+/*.tar
+/*.tgz
+
+# Generated web output is rebuilt by Vercel.
+/dist/
+/tsconfig.tsbuildinfo
+
+# Local credentials, agent configuration and design/export artifacts.
+.env
+.env.*
+!.env.example
+/vercel-mailjet-firebase-env.txt
+/.agents/
+/.claude/
+/social-media-kit/
+/design-*.png
+
+# The web build only needs the native source mirror for scripts/sync-shared.mjs.
+# Exclude native directories explicitly so Vercel also uploads mobile/src/.
+mobile/node_modules/
+mobile/android/
+mobile/ios/
+mobile/.expo/
+mobile/.gradle/
+mobile/.claude/
+mobile/.idea/
+mobile/.vscode/
+mobile/assets/
+mobile/dist/
+mobile/web-build/
+mobile/output/
+mobile/release/
+mobile/store-listing/
+mobile/design-*.png
+
+# Installable Android artifacts stay local and must not be uploaded as Vercel sources.
+*.apk
+*.aab
+*.apks
+*.ipa
+
+# Local diagnostics, screenshots and downloaded store builds are never web sources.
+tmp/
+output/
+.playwright-cli/
+
+# The web/mobile shared-file check needs tests under src/ and mobile/src/.
+# Exclude only API test files, which could otherwise become serverless routes.
+api/*.test.ts
+api/*.test.tsx
+api/*.spec.ts
+api/*.spec.tsx
+api/**/*.test.ts
+api/**/*.test.tsx
+api/**/*.spec.ts
+api/**/*.spec.tsx
+
+# Repository internals and local tooling caches.
+.git/
+.gradle/

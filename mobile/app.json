@@ -1,0 +1,83 @@
+{
+  "expo": {
+    "name": "EnglezaAI",
+    "slug": "englezaai-demo",
+    "version": "1.1.4",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon-playstore-1024.png",
+    "scheme": "englezaai-demo",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "bundleIdentifier": "com.example.englezaai",
+      "supportsTablet": false,
+      "icon": "./assets/images/icon-appstore-1024.png",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "EnglezaAI folosește microfonul numai când pornești o conversație, o provocare vocală sau un exercițiu de pronunție."
+      }
+    },
+    "android": {
+      "package": "com.example.englezaai",
+      "softwareKeyboardLayoutMode": "resize",
+      "adaptiveIcon": {
+        "backgroundColor": "#272278",
+        "foregroundImage": "./assets/images/android-icon-foreground-englezaai-1024.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome-englezaai.png"
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ],
+      "blockedPermissions": [
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+      ],
+      "predictiveBackGestureEnabled": true
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#5b5bd6",
+          "image": "./assets/images/splash-icon-englezaai-512.png",
+          "imageWidth": 132
+        }
+      ],
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "EnglezaAI folosește microfonul pentru conversațiile de exersare a englezei și pentru evaluarea pronunției.",
+          "enableBackgroundPlayback": false,
+          "enableBackgroundRecording": false
+        }
+      ],
+      "expo-asset",
+      "expo-image",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/android-icon-monochrome-englezaai.png",
+          "color": "#5b5bd6",
+          "defaultChannel": "learning-reminders"
+        }
+      ],
+      "expo-sharing",
+      "expo-web-browser",
+      "./plugins/withRevenueCatAndroid",
+      "./plugins/withAndroidReleaseOptimization"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {}
+    }
+  }
+}

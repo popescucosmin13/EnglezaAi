@@ -1,0 +1,18 @@
+.auth-mobile-download {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.auth-mobile-download > strong {
+  font-size: 15px;
+}
+.auth-mobile-download > p {
+  margin: 8px 0 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+.auth-mobile-download .store-badges {
+  justify-content: center;
+}

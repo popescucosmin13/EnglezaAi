@@ -1,0 +1,60 @@
+.store-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 24px;
+}
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-height: 72px;
+  border-radius: 7px;
+}
+.store-badge img {
+  display: block;
+  object-fit: contain;
+}
+.store-badge-apple img {
+  width: 143.6px;
+  height: 48px;
+}
+/* Google's original artwork includes its own clear space. Preserve it unchanged. */
+.store-badge-google img {
+  width: 169px;
+  height: 65.4px;
+}
+.store-badge:hover {
+  opacity: 0.82;
+}
+.store-badge:focus-visible {
+  outline: 3px solid #6750de;
+  outline-offset: 5px;
+}
+@media (max-width: 400px) {
+  .store-badges {
+    gap: 0 20px;
+  }
+  .store-badge-apple img {
+    width: 131.6px;
+    height: 44px;
+  }
+  .store-badge-google img {
+    width: 151px;
+    height: 58.4px;
+  }
+}
+@media (max-width: 359px) {
+  .store-badges {
+    gap: 0 16px;
+  }
+  .store-badge-apple img {
+    width: 125.6px;
+    height: 42px;
+  }
+  .store-badge-google img {
+    width: 145px;
+    height: 56.1px;
+  }
+}

@@ -1,0 +1,61 @@
+# Dependencies are installed by EAS Build.
+node_modules/
+mobile/node_modules/
+
+# Web output and local platform build output are not EAS source files.
+dist/
+.vercel/
+mobile/.expo/
+mobile/.gradle/
+mobile/.kotlin/
+mobile/dist/
+mobile/web-build/
+mobile/coverage/
+mobile/android/
+mobile/ios/
+
+# Scratch data, automated browser output and marketing source material are not
+# used by the native app. Excluding them keeps the EAS upload small.
+tmp/
+output/
+.playwright-cli/
+social-media-kit/
+EnglezaAI-social-media-kit.zip
+design-*.png
+design-qa.md
+mobile/design-*.png
+mobile/design-qa.md
+mobile/store-listing/
+
+# Local installable artifacts must never be uploaded as EAS build sources.
+mobile/release/
+*.apk
+*.aab
+*.ipa
+*.zip
+
+# Local environment, credentials and editor/OS noise.
+.env
+.env.local
+.env.*.local
+.env.*
+!.env.example
+mobile/.env
+mobile/.env.local
+mobile/.env.*.local
+mobile/.env.*
+!mobile/.env.example
+vercel-mailjet-firebase-env.txt
+credentials.json
+mobile/credentials.json
+*service-account*.json
+*firebase-admin*.json
+*.jks
+*.keystore
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+*.log
+.DS_Store
